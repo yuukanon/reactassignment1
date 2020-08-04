@@ -9,14 +9,14 @@ const App = () => {
   const [state, setState] = useState({username: 'Yuuka'});
 
   const updateNameHandler = (event) => {
-    setState({username: event.target.value});
+    setState({name: event.target.value});
   }
 
   return (
     <>
-      <UserInput changed={updateNameHandler} originalusername={state.username}/>
-      <UserOutput username={state.username} Nationality="Japan"/>
-      <UserOutput username="Maple" Nationality="US" />
+      <UserInput changed={updateNameHandler} originalname={state.name}/>
+      <UserOutput name={state.username} Nationality="Japan"/>
+      <UserOutput name="Maple" Nationality="US" />
     </>
   )
 }
