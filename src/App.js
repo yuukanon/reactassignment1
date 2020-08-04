@@ -6,31 +6,17 @@ import UserOutput from './Components/UserOutput';
 
 const App = () => {
 
-  const [state, setState] = useState({
-    list: [
-      {username: 'Yuuka', Nationality: 'Hungary'},
-      {username: 'Maple', Nationality: 'US'},
-      {username: 'Momo', Nationality: 'Japan'},
-    ] 
-  });
+  const [state, setState] = useState({username: 'Yuuka'});
 
   const updateNameHandler = (event) => {
-    setState({
-      list: [
-        {username: 'Yuuka', Nationality: 'Hungary'},
-        {username:  event.target.value, Nationality: 'US'},
-        {username: 'Momo', Nationality: 'Japan'},
-      ] 
-    })
-    
+    setState({username: event.target.value});
   }
 
   return (
     <>
-      <UserInput />
-      <UserOutput username={state.list[0].username} Nationality={state.list[0].Nationality} />
-      <UserOutput username="Maple" Nationality="US" changed={updateNameHandler} />
-      <UserOutput username={state.list[2].username} Nationality={state.list[2].Nationality} />
+      <UserInput changed={updateNameHandler} originalusername={state.username}/>
+      <UserOutput username={state.username} Nationality="Japan"/>
+      <UserOutput username="Maple" Nationality="US" />
     </>
   )
 }
