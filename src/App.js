@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import UserInput from './Components/UserInput';
+import UserOutput from './Components/UserOutput';
 
-function App() {
+
+const App = () => {
+
+  const [state, setState] = useState({
+    list: [
+      {username: 'Yuuka', Nationality: 'Hungary'},
+      {username: 'Maple', Nationality: 'US'},
+      {username: 'Momo', Nationality: 'Japan'},
+    ] 
+  });
+
+  const updateNameHandler = (event) => {
+    setState({
+      list: [
+        {username: 'Yuuka', Nationality: 'Hungary'},
+        {username:  event.target.value, Nationality: 'US'},
+        {username: 'Momo', Nationality: 'Japan'},
+      ] 
+    })
+    
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <UserInput />
+      <UserOutput username={state.list[0].username} Nationality={state.list[0].Nationality} />
+      <UserOutput username="Maple" Nationality="US" changed={updateNameHandler} />
+      <UserOutput username={state.list[2].username} Nationality={state.list[2].Nationality} />
+    </>
+  )
 }
 
 export default App;
